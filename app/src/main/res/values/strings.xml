@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Crypto Service</string>
+    <string name="title_home">Home</string>
+    <string name="title_market">Market</string>
+    <string name="title_profile">Profile</string>
+    <string name="light_theme">Light theme</string>
+    <string name="dark_theme">Dark theme</string>
+    <string name="implemented_by"><![CDATA[Implemented by <font color=\'#5EDE99\'>Cristian Torrado</font>, 2022]]></string>
+    <string name="implemented_by_me">Implemented by\n<font color='#5EDE99'>Luis Mendoza</font>, 2023</string>
+</resources>
