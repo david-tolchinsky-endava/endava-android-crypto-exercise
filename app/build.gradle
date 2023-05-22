@@ -17,8 +17,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField 'String', 'API_KEY', '\"b17517b1-1645-49e9-8bda-783ae0256a00\"'
-        buildConfigField 'String', 'BASE_URL', '\"https://sandbox-api.coinmarketcap.com\"'
-//        buildConfigField 'String', 'BASE_URL', '\"https://pro-api.coinmarketcap.com\"'
+//        buildConfigField 'String', 'BASE_URL', '\"https://sandbox-api.coinmarketcap.com\"'
+        buildConfigField 'String', 'BASE_URL', '\"https://pro-api.coinmarketcap.com\"'
 
         buildConfigField 'String', 'GITHUB_API_URL', '\"https://api.github.com\"'
         buildConfigField 'String', 'CRYPTO_IMAGES_URL', '\"https://coinicons-api.vercel.app/api/icon/\"'
