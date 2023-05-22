@@ -1,5 +1,6 @@
 package com.mendoza.endavacryptoapp.ui.market.module
 
+import com.mendoza.endavacryptoapp.network.COIN_MARKET_API
 import com.mendoza.endavacryptoapp.ui.market.datasource.repository.CoinMarketRepository
 import com.mendoza.endavacryptoapp.ui.market.datasource.repository.ICoinMarketRepository
 import com.mendoza.endavacryptoapp.ui.market.datasource.service.ICoinMarketService
@@ -20,7 +21,7 @@ val marketModule: Module = module {
 
     single<ICoinMarketRepository> { CoinMarketRepository(get()) }
 
-    single { provideCoinMarketService(get()) }
+    single { provideCoinMarketService(get(named(COIN_MARKET_API))) }
 }
 
 fun provideCoinMarketService(retrofit: Retrofit): ICoinMarketService {

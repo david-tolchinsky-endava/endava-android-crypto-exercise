@@ -13,4 +13,5 @@
     <string name="watchlist">Watchlist</string>
     <string name="currency_selection">Currency Selection</string>
     <string name="connection_error_text">Sorry could not connect to the server.\nPlease swipe down for relod.</string>
+    <string name="view_in_github">View in GitHub</string>
 </resources>

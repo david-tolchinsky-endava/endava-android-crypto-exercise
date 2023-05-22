@@ -20,6 +20,7 @@ android {
         buildConfigField 'String', 'BASE_URL', '\"https://sandbox-api.coinmarketcap.com\"'
 //        buildConfigField 'String', 'BASE_URL', '\"https://pro-api.coinmarketcap.com\"'
 
+        buildConfigField 'String', 'GITHUB_API_URL', '\"https://api.github.com\"'
         buildConfigField 'String', 'CRYPTO_IMAGES_URL', '\"https://coinicons-api.vercel.app/api/icon/\"'
     }
 
@@ -60,6 +61,7 @@ dependencies {
 
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

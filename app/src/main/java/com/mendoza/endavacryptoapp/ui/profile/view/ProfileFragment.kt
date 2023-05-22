@@ -7,8 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.mendoza.endavacryptoapp.R
 import com.mendoza.endavacryptoapp.databinding.FragmentProfileBinding
+import com.mendoza.endavacryptoapp.ui.market.view.cell.CryptosListAdapter
+import com.mendoza.endavacryptoapp.ui.profile.usecase.GithubProfileModel
 import com.mendoza.endavacryptoapp.ui.profile.viewmodel.ProfileViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfileFragment : Fragment() {
 
@@ -18,22 +24,67 @@ class ProfileFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private val profileViewModel: ProfileViewModel by viewModel()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(ProfileViewModel::class.java)
-
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupViews()
+
+        observeViewModel()
+
+        profileViewModel.getProfileData("lcmendozaf")
+    }
+
+    private fun observeViewModel() {
+        profileViewModel.loadingView.observe(viewLifecycleOwner, this::onLoadingChanged)
+        profileViewModel.errorView.observe(viewLifecycleOwner, this::showErrorScreen)
+        profileViewModel.profile.observe(viewLifecycleOwner, this::onProfileChanged)
+    }
+
+    private fun setupViews() {
+        binding.swipeRefresh.setOnRefreshListener {
+            profileViewModel.getProfileData("lcmendozaf")
         }
-        return root
+        binding.btnGithub.setOnClickListener {
+
+        }
+
+        profileViewModel.getProfileData("lcmendozaf")
+    }
+
+    private fun onLoadingChanged(isLoading:Boolean) {
+        binding.swipeRefresh.isRefreshing = isLoading
+    }
+
+    private fun showErrorScreen(showError:Boolean) {
+        if(showError) {
+            binding.profileGroup.visibility = View.GONE
+            binding.errorLayout.root.visibility = View.VISIBLE
+        } else {
+            binding.errorLayout.root.visibility = View.GONE
+        }
+    }
+
+    private fun onProfileChanged(profile: GithubProfileModel) {
+        binding.profileGroup.visibility = View.VISIBLE
+        loadProfileImage(profile.avatarUrl)
+        binding.tvName.text = profile.name
+        binding.tvAge.text = profile.bio
+        binding.tvLocation.text = profile.location
+    }
+
+    private fun loadProfileImage(avatarUrl: String) {
+        Glide.with(requireContext()).load(avatarUrl).error(R.drawable.ic_error).into(binding.ivProfile)
     }
 
     override fun onDestroyView() {

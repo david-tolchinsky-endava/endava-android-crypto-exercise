@@ -1,5 +1,6 @@
 package com.mendoza.endavacryptoapp.ui.market.viewModel
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,6 +25,7 @@ class MarketViewModel(
     private val _cryptoCurrenciesList: MutableLiveData<List<CryptoCurrencyModel>> = MutableLiveData()
     val cryptoCurrenciesList: LiveData<List<CryptoCurrencyModel>> = _cryptoCurrenciesList
 
+    @SuppressLint("NullSafeMutableLiveData")
     fun fetchLatestCryptos(selectedCurrency: String) {
         _loadingView.postValue(true)
         viewModelScope.launch(ioDispatcher) {
