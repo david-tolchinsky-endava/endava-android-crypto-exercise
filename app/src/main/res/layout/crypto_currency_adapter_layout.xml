@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="4dp"
+    app:cardBackgroundColor="@color/card_background_color">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp">
+
+        <LinearLayout
+            android:id="@+id/layout_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="12dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/currencies_background"
+            android:padding="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_crypto_service_black" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_symbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/mulish_extra_bold"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@id/layout_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="BTC" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/mulish_semi_bold"
+            android:textSize="16sp"
+            android:textColor="@color/title_text_color"
+            app:layout_constraintStart_toEndOf="@id/layout_icon"
+            app:layout_constraintTop_toBottomOf="@id/tv_symbol"
+            tools:text="Bitcoin" />
+
+        <TextView
+            android:id="@+id/tv_quote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/mulish_semi_bold"
+            android:textSize="16sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_symbol"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@id/tv_symbol"
+            tools:text="ARS 54,382.64" />
+
+        <LinearLayout
+            android:id="@+id/volume_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/red_rounded_rectangle"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@id/tv_symbol"
+            app:layout_constraintTop_toBottomOf="@id/tv_quote">
+
+            <ImageView
+                android:id="@+id/iv_volume_change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                app:srcCompat="@drawable/ic_arrow_down_left" />
+
+            <TextView
+                android:id="@+id/tv_volume_change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mulish_semi_bold"
+                android:textColor="@color/card_background_color"
+                android:textSize="10sp"
+                tools:text="15.3%" />
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
