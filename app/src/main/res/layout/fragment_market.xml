@@ -58,26 +58,25 @@
                 android:layout_marginTop="18dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_currency_title">
+                app:layout_constraintTop_toBottomOf="@id/tv_currency_title"
+                app:chipSpacingHorizontal="20dp">
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_ars"
                     android:theme="@style/Theme.MaterialComponents.Bridge"
                     style="@style/customChipButton"
-                    android:layout_width="70dp"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="@string/ars"
-                    android:checked="true"
-                    android:textAlignment="center"/>
+                    android:checked="true"/>
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_usd"
                     android:theme="@style/Theme.MaterialComponents.Bridge"
                     style="@style/customChipButton"
-                    android:layout_width="100dp"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="@string/usd"
-                    android:checked="false"
-                    android:textAlignment="center"/>
+                    android:checked="false"/>
             </com.google.android.material.chip.ChipGroup>
 
             <TextView

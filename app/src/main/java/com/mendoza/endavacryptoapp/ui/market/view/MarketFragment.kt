@@ -10,11 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.mendoza.endavacryptoapp.R
 import com.mendoza.endavacryptoapp.databinding.FragmentMarketBinding
 import com.mendoza.endavacryptoapp.ui.market.usecase.CryptoCurrencyModel
 import com.mendoza.endavacryptoapp.ui.market.view.cell.CryptosListAdapter
 import com.mendoza.endavacryptoapp.ui.market.viewModel.MarketViewModel
+import com.mendoza.endavacryptoapp.ui.profile.usecase.GithubProfileModel
 import com.mendoza.endavacryptoapp.utils.StringUtils
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -45,19 +47,21 @@ class MarketFragment : Fragment() {
 
         observeViewModel()
 
+        marketViewModel.fetchLatestCryptos(getSelectedCurrency())
+        marketViewModel.getProfileData("lcmendozaf")
     }
 
     private fun observeViewModel() {
         marketViewModel.loadingView.observe(viewLifecycleOwner, this::onLoadingChanged)
         marketViewModel.errorView.observe(viewLifecycleOwner, this::showErrorScreen)
         marketViewModel.cryptoCurrenciesList.observe(viewLifecycleOwner, this::onCryptoListChanged)
+        marketViewModel.profile.observe(viewLifecycleOwner, this::onProfileChanged)
     }
 
     private fun setupViews() {
         binding.swipeRefresh.setOnRefreshListener {
             marketViewModel.fetchLatestCryptos(getSelectedCurrency())
         }
-        binding.tvGreetings.text = getString(R.string.greetings_user, "Luis M")
 
         binding.chipGroup.setOnCheckedStateChangeListener { _, _ ->
             marketViewModel.fetchLatestCryptos(getSelectedCurrency())
@@ -65,8 +69,6 @@ class MarketFragment : Fragment() {
         binding.cryptosRecyclerview.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.cryptosRecyclerview.adapter = CryptosListAdapter(this::onCryptoClicked)
-
-        marketViewModel.fetchLatestCryptos(getSelectedCurrency())
     }
 
     private fun getSelectedCurrency(): String = if(binding.chipArs.isChecked) "ARS" else "USD"
@@ -87,6 +89,12 @@ class MarketFragment : Fragment() {
     private fun onCryptoListChanged(list:List<CryptoCurrencyModel>) {
         binding.cryptosRecyclerview.visibility = View.VISIBLE
         (binding.cryptosRecyclerview.adapter as CryptosListAdapter).setCurrencies(list, getSelectedCurrency())
+    }
+
+    private fun onProfileChanged(profile: GithubProfileModel) {
+        Glide.with(requireContext()).load(profile.avatarUrl).error(R.drawable.ic_error).into(binding.ivProfile)
+
+        binding.tvGreetings.text = getString(R.string.greetings_user, profile.name)
     }
 
     private fun onCryptoClicked(crypto: CryptoCurrencyModel) {

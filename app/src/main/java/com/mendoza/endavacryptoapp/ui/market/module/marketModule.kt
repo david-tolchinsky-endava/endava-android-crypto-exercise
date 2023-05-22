@@ -6,6 +6,8 @@ import com.mendoza.endavacryptoapp.ui.market.datasource.repository.ICoinMarketRe
 import com.mendoza.endavacryptoapp.ui.market.datasource.service.ICoinMarketService
 import com.mendoza.endavacryptoapp.ui.market.usecase.FetchLatestCryptosUseCase
 import com.mendoza.endavacryptoapp.ui.market.viewModel.MarketViewModel
+import com.mendoza.endavacryptoapp.ui.profile.datasource.repository.IGithubRepository
+import com.mendoza.endavacryptoapp.ui.profile.usecase.GetUserFromGithubUseCase
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -14,7 +16,7 @@ import retrofit2.Retrofit
 
 val marketModule: Module = module {
     viewModel {
-        MarketViewModel(fetchLatestCryptosUseCase = get())
+        MarketViewModel(fetchLatestCryptosUseCase = get(), getUserFromGithubUseCase = get())
     }
 
     single { fetchLatestCryptosUseCaseProvider(get()) }

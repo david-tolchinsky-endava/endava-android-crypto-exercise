@@ -1,5 +1,7 @@
 package com.mendoza.endavacryptoapp.ui.profile.view
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +27,8 @@ class ProfileFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val profileViewModel: ProfileViewModel by viewModel()
+
+    private lateinit var profile: GithubProfileModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,7 +60,13 @@ class ProfileFragment : Fragment() {
             profileViewModel.getProfileData("lcmendozaf")
         }
         binding.btnGithub.setOnClickListener {
+            try {
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse(profile.profileUrl)
+                startActivity(intent)
+            } catch (_:Exception) {
 
+            }
         }
 
         profileViewModel.getProfileData("lcmendozaf")
@@ -76,6 +86,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun onProfileChanged(profile: GithubProfileModel) {
+        this.profile = profile
         binding.profileGroup.visibility = View.VISIBLE
         loadProfileImage(profile.avatarUrl)
         binding.tvName.text = profile.name

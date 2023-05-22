@@ -6,5 +6,6 @@ data class GithubProfileModel(
     val avatarUrl:String,
     val name:String,
     val location:String,
-    val bio:String
+    val bio:String,
+    val profileUrl: String
 )

@@ -54,7 +54,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_author"
-            app:singleSelection="true">
+            app:singleSelection="true"
+            app:chipSpacingHorizontal="20dp">
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_light"
                 style="@style/customChipButton"

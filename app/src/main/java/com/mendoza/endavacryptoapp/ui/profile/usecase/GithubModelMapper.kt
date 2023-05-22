@@ -8,5 +8,6 @@ fun GithubResponseEntity.toGithubModel() = GithubProfileModel(
     avatarUrl = avatar_url ?: "",
     name = name,
     location = location,
-    bio = bio
+    bio = bio,
+    profileUrl = html_url
 )

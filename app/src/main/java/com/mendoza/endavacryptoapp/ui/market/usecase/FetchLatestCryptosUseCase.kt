@@ -6,8 +6,9 @@ class FetchLatestCryptosUseCase(private val repository: ICoinMarketRepository) {
 
     suspend fun execute(currentCurrency:String):UseCaseResult<List<CryptoCurrencyModel>> {
         return try {
-            val response = repository.getLatestCryptos(currentCurrency)
-            UseCaseResult.Success(response.toCryptoList())
+//            val response = repository.getLatestCryptos(currentCurrency)
+//            UseCaseResult.Success(response.toCryptoList())
+            UseCaseResult.Success(listOf())
         } catch (error:Exception) {
             UseCaseResult.Error(error)
         }

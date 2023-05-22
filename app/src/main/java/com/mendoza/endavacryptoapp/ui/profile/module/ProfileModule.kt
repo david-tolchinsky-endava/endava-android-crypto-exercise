@@ -15,9 +15,11 @@ import retrofit2.Retrofit
 val profileModule: Module = module {
     viewModel {
         ProfileViewModel(
-            getUserFromGithubUseCase = provideGetUserFromGithubUseCase(get())
+            getUserFromGithubUseCase = get()
         )
     }
+
+    single { provideGetUserFromGithubUseCase(get()) }
 
     single<IGithubRepository> { GithubRepository(get()) }
 

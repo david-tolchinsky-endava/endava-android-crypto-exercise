@@ -27,6 +27,8 @@
         <item name="android:fontFamily">@font/mulish_bold</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textAlignment">center</item>
+        <item name="textStartPadding">20dp</item>
+        <item name="textEndPadding">20dp</item>
         <item name="fontFamily">@font/mulish_bold</item>
     </style>
 
