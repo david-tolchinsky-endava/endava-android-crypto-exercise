@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
@@ -12,6 +13,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.mendoza.endavacryptoapp.R
 import com.mendoza.endavacryptoapp.databinding.ActivityMainBinding
+import com.mendoza.endavacryptoapp.utils.ThemePreferences
+import com.mendoza.endavacryptoapp.utils.Themes
 
 class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener {
 
@@ -19,6 +22,8 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
     private lateinit var menuItemSelected: BottomNavigationItemView
     private lateinit var menuItemIndicator: View
+
+    private lateinit var themePreferences : ThemePreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +40,20 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         navController.addOnDestinationChangedListener(this)
 
         navView.setupWithNavController(navController)
+
+        themePreferences = ThemePreferences(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        readCurrentTheme()
+    }
+
+    private fun readCurrentTheme() {
+        if (themePreferences.readCurrentTheme() == Themes.DAY)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        else
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
     }
 
     override fun onDestinationChanged(
