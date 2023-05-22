@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.mendoza.endavacryptoapp.ui.home.HomeFragment"
+        android:name="com.mendoza.endavacryptoapp.ui.home.view.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_market"
-        android:name="com.mendoza.endavacryptoapp.ui.market.MarketFragment"
+        android:name="com.mendoza.endavacryptoapp.ui.market.view.MarketFragment"
         android:label="@string/title_market"
         tools:layout="@layout/fragment_market" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.mendoza.endavacryptoapp.ui.profile.ProfileFragment"
+        android:name="com.mendoza.endavacryptoapp.ui.profile.view.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

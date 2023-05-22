@@ -1,4 +1,4 @@
-package com.mendoza.endavacryptoapp
+package com.mendoza.endavacryptoapp.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +10,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
+import com.mendoza.endavacryptoapp.R
 import com.mendoza.endavacryptoapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener {

@@ -1,4 +1,4 @@
-package com.mendoza.endavacryptoapp.ui.home
+package com.mendoza.endavacryptoapp.ui.home.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -7,4 +7,10 @@
     <string name="dark_theme">Dark theme</string>
     <string name="implemented_by"><![CDATA[Implemented by <font color=\'#5EDE99\'>Cristian Torrado</font>, 2022]]></string>
     <string name="implemented_by_me">Implemented by\n<font color='#5EDE99'>Luis Mendoza</font>, 2023</string>
+    <string name="ars">ARS</string>
+    <string name="usd">USD</string>
+    <string name="greetings_user">Good morning,\n%s</string>
+    <string name="watchlist">Watchlist</string>
+    <string name="currency_selection">Currency Selection</string>
+    <string name="connection_error_text">Sorry could not connect to the server.\nPlease swipe down for relod.</string>
 </resources>
